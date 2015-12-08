@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="gameOverzicht">
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
+
+</head>
+<body>
+
+<script>
+
+    var gameOverzicht = angular.module('gameOverzicht',[]);
+    function gameController($scope){
+        $scope.games = [
+            { quests: '3',name: 'Informatica'},
+            { quests: '6',name: 'Economie'},
+            { quests: '22',name: 'Rechten'},
+            { quests: '15',name: 'Schilder'}
+        ];
+    }
+
+    gameOverzicht.controller('gameController',gameController);
+
+</script>
+
+<style>
+    .gameOverviewGrid md-grid-list {
+        margin: 8px;
+    }
+
+    .gameOverviewGrid .gray {
+        background: #f5f5f5;
+    }
+
+    .gameOverviewGrid md-grid-tile {
+        transition: all 400ms ease-out 50ms;
+    }
+</style>
+
+<div class="gameOverviewGrid" ng-controller="gameController">
+
+    <div class='md-padding' layout="row" layout-wrap>
+        <md-card style="width: 300px;" ng-repeat="game in games">
+           <span>hier komt nog een plaatje</span>
+            <md-card-content>
+                <h2>{{game.name}}</h2>
+                <p></p>
+            </md-card-content>
+            <div class="md-actions" layout="row" layout-align="end center">
+                <md-button>Open</md-button>
+            </div>
+        </md-card>
+    </div>
+</div>
+
+</body>
+</html>
