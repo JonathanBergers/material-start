@@ -11,7 +11,7 @@
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
-
+    <script src="GridGameController.js"></script>
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
@@ -20,51 +20,79 @@
 </head>
 <body>
 
-<script>
-
-    var gameOverzicht = angular.module('gameOverzicht',[]);
-    function gameController($scope){
-        $scope.games = [
-            { quests: '3',name: 'Informatica'},
-            { quests: '6',name: 'Economie'},
-            { quests: '22',name: 'Rechten'},
-            { quests: '15',name: 'Schilder'}
-        ];
-    }
-
-    gameOverzicht.controller('gameController',gameController);
-
-</script>
 
 <style>
-    .gameOverviewGrid md-grid-list {
-        margin: 8px;
+    #flyingButton {
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
     }
 
-    .gameOverviewGrid .gray {
-        background: #f5f5f5;
+    hr{
+        color: #FFFFFF;
+        background: #FFFFFF;
+        width: 280px;
+        height: 1px;
     }
 
-    .gameOverviewGrid md-grid-tile {
-        transition: all 400ms ease-out 50ms;
+    .game-grid{
+        color: #FFFFFF;
+        text-align: center;
     }
+
+    .game-grid p{
+        color: #BBDEFB;
+        text-align: center;
+    }
+
+    .game-grid md-card{
+        background: #2196F3;
+        box-shadow: 1px 1px 1px 1px #B6B6B6;
+    }
+
+    md-card-content{
+        display:block;
+        margin:auto;
+    }
+
+    .custom-button{
+        background: #FFC107;
+        width: 100%;
+    }
+
+    .md-card-image{
+        width:150px;
+        height:150px;
+        display:block;
+        margin:auto;
+    }
+
 </style>
 
-<div class="gameOverviewGrid" ng-controller="gameController">
+<div class="game-grid" ng-controller="gameController">
 
     <div class='md-padding' layout="row" layout-wrap>
+
         <md-card style="width: 300px;" ng-repeat="game in games">
-           <span>hier komt nog een plaatje</span>
+            <img src="http://icons.iconarchive.com/icons/mkho/christmas/256/Star-icon.png" class="md-card-image" alt="user avatar">
             <md-card-content>
-                <h2>{{game.name}}</h2>
-                <p></p>
+                <h1>{{game.name}}</h1>
+                <p>Aantal quests: {{game.quests}}</p>
             </md-card-content>
-            <div class="md-actions" layout="row" layout-align="end center">
-                <md-button>Open</md-button>
+            <hr>
+            <div class="md-actions" layout="row" layout-align="start center">
+                <md-button class="custom-button">Open</md-button>
             </div>
+
         </md-card>
+
     </div>
+
 </div>
+
+<md-button ng-click="" id="flyingButton" class="md-fab md-primary md-hue-2" aria-label="Profile">
+    <md-icon md-svg-src="img/icons/ic_people_24px.svg"></md-icon>
+</md-button>
 
 </body>
 </html>
